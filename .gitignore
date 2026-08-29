@@ -1,0 +1,20 @@
+# Go build output
+gobank
+*.exe
+
+# Local environment files
+.env
+
+# Go workspace/cache
+.gocache/
+go.work
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Terraform later
+.terraform/
+*.tfstate
+*.tfstate.backup

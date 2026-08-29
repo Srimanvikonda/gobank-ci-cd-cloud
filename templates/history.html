@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Transaction History</h1>
+        <div class="user-info">
+            <p><strong>Account Holder:</strong> {{.User.Name}}</p>
+            <p><strong>Current Balance:</strong> ₹{{printf "%.2f" .User.Balance}}</p>
+        </div>
+
+        <table style="width:100%; margin:20px 0; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f8f9fa;">
+                    <th style="padding:10px; text-align:left;">Type</th>
+                    <th style="padding:10px; text-align:left;">Amount</th>
+                    <th style="padding:10px; text-align:left;">Date/Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Transactions}}
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:10px;">{{.Type}}</td>
+                    <td style="padding:10px;">₹{{printf "%.2f" .Amount}}</td>
+                    <td style="padding:10px;">{{.Timestamp.Format "2006-01-02 15:04:05"}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+
+        <a href="/dashboard?user={{.User.Username}}" style="display:block; text-align:center; margin-top:20px;">Back to Dashboard</a>
+    </div>
+</body>
+</html>
